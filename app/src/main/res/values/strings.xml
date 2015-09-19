@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Toma Pedidos</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- textos para la actividad de ingreso  -->
+    <string name="txt_usuario">Usuario</string>
+    <string name="txt_password">Password</string>
+    <string name="txt_ingresar">Ingresar</string>
+    <string name="txt_nombreaplicacion">Sistema de Preventa Móvil - Lindley</string>
+    <string name="txt_mensajeerror">Usuario y/o Password no válido</string>
+
+    <!-- textos para la actividad main (de bienvenida)  -->
+    <string name="txt_bienvenido">Bienvenido al Sistema de Preventa Móvil - Lindley</string>
+    <!-- textos para drawer                             -->
+    <string name="txt_ruta">Ruta</string>
+    <string name="txt_cliente">Cliente</string>
+    <string name="txt_estadistica">Estadísticas</string>
+    <string name="txt_cerrarsesion">Cerrar Sesión</string>
+    <string name="title_activity_clientes">ClientesActivity</string>
+    <!-- Texto en Clientes -->
+    <string name="txt_clientebuscar">Cliente a Buscar</string>
+    <!-- Validaciones -->
+    <string name="txt_errorusuario">Usuario no válido</string>
+    <string name="txt_errorpassword">Password no válido</string>
+    <string name="txt_errorusuariopassword">Usuario y/o Password no válido(s)</string>
+
+</resources>
