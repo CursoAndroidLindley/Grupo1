@@ -2,15 +2,30 @@ package pe.lindley.tomapedidos;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class ClientesActivity extends AppCompatActivity {
+import pe.lindley.tomapedidos.adapter.recyclerview.RVClienteAdapter;
+import pe.lindley.tomapedidos.entities.Cliente;
+
+public class ClienteActivity extends AppCompatActivity implements RVClienteAdapter.RVClienteAdapterListener {
+
+    private RecyclerView cliente_rvcliente;
+    private RVClienteAdapter rvClienteAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.clientes_activity);
+        setContentView(R.layout.cliente_activity);
+
+        cliente_rvcliente = (RecyclerView) findViewById(R.id.cliente_rvcliente);
+
+        cliente_rvcliente.setHasFixedSize(true);
+        cliente_rvcliente.setLayoutManager(new LinearLayoutManager(ClienteActivity.this));
+
+        rvClienteAdapter = new RVClienteAdapter(ClienteActivity.this)
     }
 
     @Override
@@ -33,5 +48,10 @@ public class ClientesActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onSelectedItem(Cliente cliente, int position) {
+
     }
 }
