@@ -28,8 +28,7 @@
     <!-- Validaciones -->
     <string name="txt_errorusuario">Usuario no válido</string>
     <string name="txt_errorpassword">Password no válido</string>
-    <string name="txt_errorusuariopassword">Usuario y/o Password no válido(s)</string>
-    <!-- Textos del menú cliente -->
+    <string name="txt_errorusuariopassword">Usuario y/o Password no válido(s)</string>    <!-- Textos del menú cliente -->
     <string name="txt_nuevoproducto">Agregar Producto</string>
     <string name="txt_eliminartodoproducto">Eliminar todos los Producto</string>
     <string name="txt_ubicacioncliente">Ubicación del Cliente</string>
