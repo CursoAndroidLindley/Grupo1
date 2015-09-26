@@ -18,8 +18,9 @@ import java.io.IOException;
 import pe.lindley.tomapedidos.dao.ClienteDAO;
 import pe.lindley.tomapedidos.dao.DataBaseHelper;
 import pe.lindley.tomapedidos.dao.UsuarioDAO;
+import pe.lindley.tomapedidos.interfaces.Logeable;
 
-public class Login extends AppCompatActivity {
+public class Login extends AppCompatActivity implements Logeable {
 
     private Button login_btingresar;
     private EditText login_etusuario;
@@ -45,12 +46,16 @@ public class Login extends AppCompatActivity {
         login_tvmensajeerror = (TextView) findViewById(R.id.login_tvmensajeerror);
 
         SharedPreferences prefs =
-                getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
-        String usuario = prefs.getString("user", "");
-        String password = prefs.getString("passwd", "");
-        if( !usuario.trim().equals("") && !password.trim().equals("") ) {
+                getSharedPreferences(ARG_PREF, Context.MODE_PRIVATE);
+
+        if (prefs != null && prefs.contains(ARG_USER) && prefs.contains(ARG_PASS)
+                && !prefs.getString(ARG_USER, "").isEmpty()
+                && !prefs.getString(ARG_PASS, "").isEmpty()) {
+            login_etusuario.setText(prefs.getString(ARG_USER, ""));
+            login_etpassword.setText(prefs.getString(ARG_PASS, ""));
             ingresar();
         }
+
         login_btingresar.setOnClickListener(login_btingresarOnClickListener);
     }
 
@@ -61,23 +66,23 @@ public class Login extends AppCompatActivity {
             boolean error = false;
             login_tvmensajeerror.setText("");
             StringBuilder stringBuilder = new StringBuilder();
-            if ( login_etusuario.getText().toString().trim().equals("") ) {
+            if (login_etusuario.getText().toString().trim().equals("")) {
                 error = true;
                 stringBuilder.append(getString(R.string.txt_errorusuario));
                 stringBuilder.append("\n");
             }
-            if ( login_etpassword.getText().toString().trim().equals("") ) {
+            if (login_etpassword.getText().toString().trim().equals("")) {
                 error = true;
                 stringBuilder.append(getString(R.string.txt_errorpassword));
                 stringBuilder.append("\n");
             }
-            if ( error ) {
+            if (error) {
                 login_tvmensajeerror.setText(stringBuilder.toString());
                 return;
             }
 
             UsuarioDAO usuarioDAO = UsuarioDAO.getInstance();
-            if( usuarioDAO.isLogin(login_etusuario.getText().toString().trim(), login_etpassword.getText().toString().trim()) ) {
+            if (usuarioDAO.isLogin(login_etusuario.getText().toString().trim(), login_etpassword.getText().toString().trim())) {
                 ingresar();
             } else {
                 login_tvmensajeerror.setText(getString(R.string.txt_errorusuariopassword));
@@ -86,12 +91,21 @@ public class Login extends AppCompatActivity {
     };
 
     public void ingresar() {
+        SharedPreferences prefs =
+                getSharedPreferences(ARG_PREF, Context.MODE_PRIVATE);
+        SharedPreferences.Editor spe = prefs.edit();
+
+        spe.putString(ARG_USER, login_etusuario.getText().toString().trim());
+        spe.putString(ARG_PASS, login_etpassword.getText().toString().trim());
+        spe.commit();
+
         Intent intent = new Intent(Login.this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
     @Override
     public void onBackPressed() {
-        System.exit(0);
+        finish();
     }
 }

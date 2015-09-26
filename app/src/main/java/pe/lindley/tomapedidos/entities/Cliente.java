@@ -15,9 +15,19 @@ public class Cliente implements Parcelable {
     private String clienteDireccion;
     // para las coordenadas
     private String clienteLatitud;
-    private String clienteAltitud;
+    private String clienteLongitud;
 
     public Cliente() {
+    }
+
+    public Cliente(int clienteId, String clienteRazonSocial, String clienteDireccion, String clienteGiroNegocio, String clienteNIT, String clienteLatitud, String clienteLongitud) {
+        this.clienteId = clienteId;
+        this.clienteRazonSocial = clienteRazonSocial;
+        this.clienteNIT = clienteNIT;
+        this.clienteGiroNegocio = clienteGiroNegocio;
+        this.clienteDireccion = clienteDireccion;
+        this.clienteLatitud = clienteLatitud;
+        this.clienteLongitud = clienteLongitud;
     }
 
     public int getClienteId() {
@@ -52,12 +62,12 @@ public class Cliente implements Parcelable {
         this.clienteLatitud = clienteLatitud;
     }
 
-    public String getClienteAltitud() {
-        return clienteAltitud;
+    public String getClienteLongitud() {
+        return clienteLongitud;
     }
 
-    public void setClienteAltitud(String clienteAltitud) {
-        this.clienteAltitud = clienteAltitud;
+    public void setClienteLongitud(String clienteLongitud) {
+        this.clienteLongitud = clienteLongitud;
     }
 
     protected Cliente(Parcel in) {
@@ -67,7 +77,7 @@ public class Cliente implements Parcelable {
         clienteDireccion = in.readString();
         clienteGiroNegocio = in.readString();
         clienteLatitud = in.readString();
-        clienteAltitud = in.readString();
+        clienteLongitud = in.readString();
     }
 
     @Override
@@ -83,11 +93,11 @@ public class Cliente implements Parcelable {
         dest.writeString(clienteDireccion);
         dest.writeString(clienteGiroNegocio);
         dest.writeString(clienteLatitud);
-        dest.writeString(clienteAltitud);
+        dest.writeString(clienteLongitud);
     }
 
     @SuppressWarnings("unused")
-    public static final Parcelable.Creator<Cliente> CREATOR = new Parcelable.Creator<Cliente>() {
+    public static final Creator<Cliente> CREATOR = new Creator<Cliente>() {
         @Override
         public Cliente createFromParcel(Parcel in) {
             return new Cliente(in);
@@ -113,5 +123,15 @@ public class Cliente implements Parcelable {
 
     public void setClienteDireccion(String clienteDireccion) {
         this.clienteDireccion = clienteDireccion;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if( o != null && o instanceof Cliente ) {
+            return getClienteId() == ((Cliente)o).getClienteId();
+        } else
+        {
+            return false;
+        }
     }
 }

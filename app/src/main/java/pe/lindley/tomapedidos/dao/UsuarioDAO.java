@@ -2,11 +2,13 @@ package pe.lindley.tomapedidos.dao;
 
 import android.database.Cursor;
 
+import java.util.List;
+
 /**
  * Created by jlama on 19/09/2015.
  */
 public class UsuarioDAO {
-    private static UsuarioDAO INSTANCE = new UsuarioDAO();
+    private static UsuarioDAO INSTANCE = null;
 
     private UsuarioDAO() {
     }

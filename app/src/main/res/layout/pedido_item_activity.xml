@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cliente_item_cv"
+    android:id="@+id/pedido_item_cv"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="3dp"
@@ -15,14 +14,13 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/txt_clienteid" />
+                android:text="@string/txt_productoid" />
 
             <TextView
                 android:layout_width="0dp"
@@ -31,22 +29,26 @@
                 android:text="@string/txt_separador" />
 
             <TextView
-                android:id="@+id/cliente_item_tvid"
+                android:id="@+id/pedido_item_tvid"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/pedido_item_tvnombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/txt_clientenit" />
+                android:text="@string/txt_cantidad" />
 
             <TextView
                 android:layout_width="0dp"
@@ -55,20 +57,10 @@
                 android:text="@string/txt_separador" />
 
             <TextView
-                android:id="@+id/cliente_item_tvnit"
+                android:id="@+id/pedido_item_tvcantidad"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/cliente_item_tvnombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/cliente_item_tvdireccion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
     </LinearLayout>
 </android.support.v7.widget.CardView>

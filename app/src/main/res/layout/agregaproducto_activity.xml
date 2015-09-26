@@ -1,28 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cliente_item_cv"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="3dp"
-    card_view:cardCornerRadius="4dp">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="16dp"
+    tools:context="pe.lindley.tomapedidos.AgregaProductoActivity">
 
     <LinearLayout
+        android:layout_centerInParent="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="20dp">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/txt_clienteid" />
+                android:text="@string/txt_productoid" />
 
             <TextView
                 android:layout_width="0dp"
@@ -31,22 +31,28 @@
                 android:text="@string/txt_separador" />
 
             <TextView
-                android:id="@+id/cliente_item_tvid"
+                android:id="@+id/agregaproducto_tvid"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/agregaproducto_tvnombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/txt_clientenit" />
+                android:text="@string/txt_cantidad" />
 
             <TextView
                 android:layout_width="0dp"
@@ -54,21 +60,14 @@
                 android:layout_weight="1"
                 android:text="@string/txt_separador" />
 
-            <TextView
-                android:id="@+id/cliente_item_tvnit"
+            <EditText
+                android:id="@+id/agregaproducto_etcantidad"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:inputType="number"
+                android:singleLine="true" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/cliente_item_tvnombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/cliente_item_tvdireccion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
     </LinearLayout>
-</android.support.v7.widget.CardView>
+
+</RelativeLayout>

@@ -1,19 +1,26 @@
 package pe.lindley.tomapedidos;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 import pe.lindley.tomapedidos.adapter.recyclerview.RVClienteAdapter;
+import pe.lindley.tomapedidos.dao.ClienteDAO;
 import pe.lindley.tomapedidos.entities.Cliente;
+import pe.lindley.tomapedidos.interfaces.Pasable;
 
-public class ClienteActivity extends AppCompatActivity implements RVClienteAdapter.RVClienteAdapterListener {
+public class ClienteActivity extends AppCompatActivity implements RVClienteAdapter.RVClienteAdapterListener, Pasable {
 
     private RecyclerView cliente_rvcliente;
     private RVClienteAdapter rvClienteAdapter;
+    private EditText cliente_etbuscar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,37 +28,35 @@ public class ClienteActivity extends AppCompatActivity implements RVClienteAdapt
         setContentView(R.layout.cliente_activity);
 
         cliente_rvcliente = (RecyclerView) findViewById(R.id.cliente_rvcliente);
+        cliente_etbuscar = (EditText) findViewById(R.id.cliente_etbuscar);
 
         cliente_rvcliente.setHasFixedSize(true);
         cliente_rvcliente.setLayoutManager(new LinearLayoutManager(ClienteActivity.this));
+        rvClienteAdapter = new RVClienteAdapter(ClienteActivity.this);
+        cliente_rvcliente.setAdapter(rvClienteAdapter);
 
-        rvClienteAdapter = new RVClienteAdapter(ClienteActivity.this)
-    }
+        cliente_etbuscar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_clientes, menu);
-        return true;
-    }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                rvClienteAdapter.getFilter().filter(s.toString());
+            }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+            @Override
+            public void afterTextChanged(Editable s) {
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+            }
+        });
     }
 
     @Override
     public void onSelectedItem(Cliente cliente, int position) {
+        Intent intent = new Intent(ClienteActivity.this, PedidoActivity.class);
+        intent.putExtra(ARG_CLIENTE, cliente);
 
+        startActivity(intent);
     }
 }

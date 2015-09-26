@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context="pe.lindley.tomapedidos.MainActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -38,21 +37,31 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/main_btiniciodia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/txt_ruta" />
+            android:text="@string/txt_iniciodia" />
 
         <Button
+            android:id="@+id/main_btpreventa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/txt_cliente" />
+            android:text="@string/txt_preventa" />
 
         <Button
+            android:id="@+id/main_btestadistica"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/txt_estadistica" />
 
         <Button
+            android:id="@+id/main_btcierredia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_cierredia" />
+
+        <Button
+            android:id="@+id/main_btcerrarsesion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/txt_cerrarsesion" />
